@@ -1,4 +1,24 @@
 function fit_results = fit_avatar_quest(actions,input,settings)
+    % fit_avatar_quest.m
+    % =========================================================================
+    % DESCRIPTION:
+    %   Fit the DCM to behavioral data, compute metrics, simulate recoverability.
+    %
+    % INPUTS:
+    %   - actions (3×N double): from process_behavioral_file.
+    %   - input (9×N double): task inputs per trial.
+    %   - settings (struct) with fields:
+    %       • field: cell array of parameter names to fit
+    %       • params: prior/fixed values struct
+    %       • id: subject ID string
+    %       • timestamp: datetime string
+    %       • result_dir: output folder path
+    %
+    % OUTPUTS:
+    %   - fit_results (struct): parameter estimates & metrics.
+    %   - Writes:
+    %       • plot_<id>_<timestamp>.png
+    %       • DCMs_<id>_<timestamp>.mat
 
     DCM = inversion_avatar_quest(actions,input,settings);
 

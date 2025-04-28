@@ -1,8 +1,16 @@
 function add_subject_id_to_beh_filename()
-% Rename behavioral files for the avatar quest task
-% Check to see if the prolific ID is present in the filename
-% If not, look inside and get the prolific ID, prepending it to the
-% filename
+% add_subject_id_to_beh_filename.m
+% =========================================================================
+% DESCRIPTION:
+%   Rename raw behavioral files by prepending each file’s Prolific ID.
+%
+% INPUTS:
+%   - data_dir (string): path to folder containing CSVs named 
+%       'avatar_quest_3AFC*' (no ID prefix).
+%
+% OUTPUTS:
+%   - Files in data_dir are renamed to '<participantID>_avatar_quest_3AFC*.csv'.
+
 % Remember to close all files before running script
 
 data_dir = 'L:\rsmith\lab-members\cgoldman\avatar_quest_task\data';

@@ -1,4 +1,6 @@
 function model_output = model_SPM_avatar_quest(params,actions, input, settings,simulate)
+    % Computational model for the Avatar Quest Task
+
     % Initialize variable to store the probability that the model assigns to
     % each choice
     num_trials = size(actions,2);

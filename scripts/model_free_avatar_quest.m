@@ -1,4 +1,22 @@
 function mf_results = model_free_avatar_quest(actions,input)
+    % model_free_avatar_quest.m
+    % =========================================================================
+    % DESCRIPTION:
+    %   Compute simple choice‐ratio metrics (model‐free) from data.
+    %
+    % INPUTS:
+    %   - actions (3×N double): one‐hot choice matrix.
+    %   - input (9×N double): task inputs per trial.
+    %
+    % OUTPUTS:
+    %   - mf_results (struct) with fields:
+    %       • money_ratio
+    %       • control_ratio
+    %       • diff2_ratio
+    %       • diff3_ratio
+
+
+
     % Determine the number of played trials
     num_trials = size(actions, 2);
     % Get the chosen option for each trial. Since actions is one-hot, the max gives the chosen row.

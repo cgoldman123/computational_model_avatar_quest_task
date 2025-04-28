@@ -1,4 +1,19 @@
 function plot_avatar_quest(params, actions, input, model_output)
+% plot_avatar_quest.m
+% =========================================================================
+% DESCRIPTION:
+%   Visualize action-probability heatmaps and overlay actual choices.
+%
+% INPUTS:
+%   - params (struct): model parameters (for title or annotations).
+%   - actions (3×N double): actual choice data.
+%   - input (9×N double): task schedule for annotations.
+%   - model_output (struct) with action_prob_distribution (3×N).
+%
+% OUTPUTS:
+%   - Figure displayed showing probability heatmap by block + choice markers.
+%   - Darker shading indicates that the choices were more probable under the model.
+
     % Determine number of trials and blocks.
     nTrials = size(actions, 2);
     nBlocks = ceil(nTrials / 12);

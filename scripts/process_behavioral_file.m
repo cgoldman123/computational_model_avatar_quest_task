@@ -1,7 +1,25 @@
 function [actions, task_schedule_reshaped] = process_behavioral_file(subject)
-    
+
+% process_behavioral_file.m
+% =========================================================================
+% DESCRIPTION:
+%   Load the latest raw CSV for one subject, extract choices & schedule.
+%
+% INPUTS:
+%   - subject (string): Prolific ID to match in 'data/*_avatar_quest_3AFC*'.
+%   - data/all_3afc_conds.csv: block‐wise definitions of Money/Control/Difficulty conditions.
+%
+% OUTPUTS:
+%   - actions (3×N double): one‐hot choice matrix (rows=options) of participant choices.
+%   - task_schedule_reshaped (9×N double): Describes the trial options.
+        % Each column corresponds to a trial. First three rows correspond to option
+        % 1, second three rows option 2, third three rows option 3.
+        % Within each row, it goes money, control, difficulty
+
+
+
 % Define folder where data is located
-folder = 'L:\rsmith\lab-members\cgoldman\avatar_quest_task\data\';
+folder = '..\data\';
 % Get matching files
 pattern = fullfile(folder, ['*' subject '_avatar_quest_3AFC*']);
 files = dir(pattern);
@@ -40,7 +58,7 @@ actions = zeros(3, length(choices));
 actions(sub2ind(size(actions), choices', 1:length(choices))) = 1;
 
 % Read in schedule
-schedule_file = 'L:\rsmith\lab-members\cgoldman\avatar_quest_task\all_3afc_conds.csv';
+schedule_file = '..\all_3afc_conds.csv';
 opts = detectImportOptions(schedule_file, 'Delimiter', ',');
 opts.VariableNamingRule = 'preserve';  % Keep original column names like 'BlockLabel1'
 schedule_data = readtable(schedule_file, opts);
